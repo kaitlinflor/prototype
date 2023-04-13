@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#intro-text {
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+}
+
+#intro-text h1 {
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    background-color: #e89135;
+    padding: 30px;
+    display: block;
+}
+
+#intro-text p {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    padding: 50px;
+    display: block;
+}
+
+#intro-text h2 {
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    background-color: #795c74;
+    padding: 10px;
+    display: block;
+}
