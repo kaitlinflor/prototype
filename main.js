@@ -6,6 +6,10 @@ var host = "cpsc484-03.yale.internal:8888";
 
 var target = null;
 
+window.onload = function() {
+    setup();
+  };
+
 $(document).ready(function () {
     frames.start();
     // twod.start();
@@ -21,7 +25,7 @@ var frames = {
             // frames.show(JSON.parse(event.data));
 
             if(target == null){
-                target = frames.get_right_hand_command(JSON.parse(event.data));
+                target = frames.detect_target(JSON.parse(event.data));
                 console.log("Checking");
             }
 
@@ -45,7 +49,7 @@ var frames = {
     //     console.log(frame);
     // }
 
-    get_right_hand_command: function (frame) {
+    detect_target: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
           return command;
