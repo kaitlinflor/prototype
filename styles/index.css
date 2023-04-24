@@ -181,11 +181,11 @@ body {
     height: 0;
     border: 25px solid transparent;
     border-top: 0;
-    border-bottom: 36px solid white;
+    border-bottom: 36px solid rgb(255, 244, 244);
     border-bottom-left-radius: 38px;
     border-bottom-right-radius: 38px;
     transform: rotate(-45deg);
-    z-index: 999;
+    z-index: 1999;
   }
 
   .triangle3 {
@@ -200,12 +200,12 @@ body {
     border-bottom-left-radius: 38px;
     border-bottom-right-radius: 38px;
     transform: rotate(-45deg);
-    z-index: 997;
+    z-index: 1997;
   }
 
   .cursor {
     position: relative;
-    z-index: 999;
+    z-index: 1999;
     top: 0%;
     left: 0%;
     visibility: hidden;
