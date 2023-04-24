@@ -125,7 +125,7 @@ function sendHandCommand(frame, target) {
     document.getElementById('t3').style.top = (top_pos + .6).toString().concat("%");
 
     document.getElementById('t').style.right = right_pos.toString().concat("%");
-    document.getElementById('t2').style.right = (right_pos + .42).toString().concat("%");
+    document.getElementById('t2').style.right = (right_pos + .29).toString().concat("%");
     document.getElementById('t3').style.right = (right_pos - .45).toString().concat("%");
 
 }
