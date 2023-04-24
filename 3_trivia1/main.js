@@ -4,6 +4,11 @@ var socket = new WebSocket("ws://cpsc484-04.yale.internal:8888/frames");
 
 var host = "cpsc484-04.yale.internal:8888";
 
+window.onload = function() {
+    setup();
+};
+
+
 $(document).ready(function() {
     frames.start();
     twod.start();
@@ -34,7 +39,7 @@ get_right_hand: function (frame) {
     command = null;
     // Normalize by subtracting the root (pelvis) joint coordinates
     var num_people = frame.people.length;
-    var right_hand_x = frame.people[num_people - 1].joints[15].position.x*(-1);
+    var right_hand_x = frame.people[num_people - 1].joints[15].position.x*(-1) + width/2;
     var right_hand_y = frame.people[num_people - 1].joints[15].position.y;
     var right_hand_z = frame.people[num_people - 1].joints[15].position.z*(-1);
 

@@ -4,6 +4,10 @@ var socket = new WebSocket("ws://cpsc484-04.yale.internal:8888/frames");
 
 var host = "cpsc484-04.yale.internal:8888";
 
+window.onload = function() {
+  setup();
+};
+
 $(document).ready(function() {
     frames.start();
     twod.start();

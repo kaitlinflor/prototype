@@ -4,6 +4,10 @@ var socket = new WebSocket("ws://cpsc484-04.yale.internal:8888/frames");
 
 var host = "cpsc484-04.yale.internal:8888";
 
+window.onload = function() {
+  setup();
+};
+
 $(document).ready(function() {
   frames.start();
   twod.start();
@@ -12,7 +16,6 @@ $(document).ready(function() {
 var command = null;
 
 const images = document.querySelectorAll("img.selector");
-
 
 var frames = {
   socket: null,
@@ -29,7 +32,6 @@ var frames = {
   },
 
 
-
   get_right_hand: function (frame) {
     if (frame.people.length < 1) {
       var command = null;
@@ -38,7 +40,7 @@ var frames = {
     command = null;
     // Normalize by subtracting the root (pelvis) joint coordinates
     var num_people = frame.people.length;
-    var right_hand_x = frame.people[num_people - 1].joints[15].position.x*(-1);
+    var right_hand_x = frame.people[num_people - 1].joints[15].position.x*(-1) + width/2;
     var right_hand_y = frame.people[num_people - 1].joints[15].position.y;
     var right_hand_z = frame.people[num_people - 1].joints[15].position.z*(-1);
 
@@ -50,7 +52,6 @@ var frames = {
     var cx = rect1.left + rect1.width * 0.5;    // find center of first image
     var cy = rect1.top + rect1.height * 0.5;
     
-
       // get all images with the class name "selector" on the page
     const images = document.querySelectorAll("img.selector");
 

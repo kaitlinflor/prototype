@@ -180,3 +180,11 @@ body {
     width: 100px;
     height: 100px;
 }
+
+#sketch-holder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
