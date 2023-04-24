@@ -39,10 +39,17 @@ var frames = {
       return null;
     }
   
-
     if (tracked_person_id == null) {
+      var min_z = Number.MAX_SAFE_INTEGER;
+      for (var i = 0; i < frame.people.length; i++) {
+        var person_z = frame.people[i].joints[0].position.z;
+        if (person_z < min_z) {
+          min_z = person_z;
+          tracked_person_id = frame.people[i].body_id;
+        }
+      }
       // If we haven't started tracking anyone yet, track the first person
-      tracked_person_id = frame.people[0].body_id;
+      // tracked_person_id = frame.people[0].body_id;
     }
 
   
@@ -67,7 +74,7 @@ var frames = {
     var num_people = frame.people.length;
     var right_hand_x = tracked_person.joints[15].position.x*(-1) + width/2;
     var right_hand_y = tracked_person.joints[15].position.y;
-    var right_hand_z = tracked_person.joints[15].position.z*(-1);
+    // var right_hand_z = tracked_person.joints[15].position.z*(-1);
 
     let myImage = document.getElementById("myImage");
     myImage.style.left = right_hand_x + "px";
