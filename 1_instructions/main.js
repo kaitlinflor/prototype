@@ -42,7 +42,7 @@ var twod = {
     twod.socket.onmessage = function(event) {
         twod.show(JSON.parse(event.data));
         }
-    },  
+    },
 
     show: function(twod) {
         $('.twod').attr("src", 'data:image/pnjpegg;base64,'+twod.src);
@@ -61,7 +61,7 @@ function setup() {
     canvas.parent('sketch-holder');
     canvas.width = width;
     canvas.height = height;
-    
+
 }
 
 
