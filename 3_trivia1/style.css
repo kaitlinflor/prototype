@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#intro-text {
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+}
+
+#answer {
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+}
+
+#intro-text h1 {
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    background-color: #e89135;
+    padding: 30px;
+    display: block;
+}
+
+#intro-text p {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    padding: 50px;
+    display: block;
+}
+
+#answer p {
+    position: relative;
+    right: 250px;
+    font-size: 75px;
+    color:rgb(0, 0, 0);
+    display: block;
+}
+
+#answer p1 {
+    position: relative;
+    top: -162px;
+    right: -250px;
+    font-size: 75px;
+    color:rgb(0, 0, 0);
+    display: block;
+}
+
+#answer p2 {
+    position: relative;
+    top: -410px;
+    right: -250px;
+    font-size: 75px;
+    color:rgb(0, 0, 0);
+    display: block;
+}
+
+.ans1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    position: relative;
+    right: 250px;
+    top: 30px;
+  }
+
+.ans2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    position: relative;
+    right: 250px;
+    top: 50px;
+}
+
+.ans3 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    position: relative;
+    right: -250px;
+    top: -98px;
+}
+
+.ans4 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    position: relative;
+    right: -250px;
+    top: -414px;
+}
+
+#intro-text h2 {
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    padding: 10px;
+    display: block;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    border: 5px solid black;
+    background-color: #ffffff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 70px;
+    align-items: center;
+    padding: 20px;
+    margin-left: 50px;
+    position: relative;
+    top: -180px;
+}

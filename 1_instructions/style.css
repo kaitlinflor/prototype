@@ -1,0 +1,35 @@
+body {
+    cursor: url('../figures/hand.png') 20 20, auto;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#intro-text {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 100px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 300px;
+    margin-right: 300px
+}
+
+#start {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 300px;
+    margin-right: 300px;
+    font-size: 50px;
+}
+
+#countdown {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 300px;
+    margin-right: 300px;
+    font-size: 100px;
+}

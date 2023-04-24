@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HCI Prototypes</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="intro-text">
+            <h1>Q: Personal Health Question</h1>
+            <h2>How are you feeling today?</h2>
+        </div>
+
+        <div class="container">
+            <img src="../figures/one.png" alt="Very Sad Face" class = "selector">
+            <img src="../figures/face_1.png" alt="Sad Face" class = "selector">
+            <img src="../figures/face_2.png" alt="Neutral Face" class = "selector">
+            <img src="../figures/face_3.png" alt="Happy Face" class = "selector">
+            <img src="../figures/face_4.png" alt="Very Happy Face" class = "selector">
+        </div>
+        
+
+        <div class="circle" id="timer">3</div>
+
+        <div id="popup">
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h1>You chose answer:</h1> 
+                    <img src="../figures/one.png" alt="Very Sad Face" class = "chosen" style="display: none;">
+                    <img src="../figures/two.png" alt="Sad Face" class = "chosen" style="display: none;">
+                    <img src="../figures/three.png" alt="Neutral Face" class = "chosen" style="display: none;">
+                    <img src="../figures/four.png" alt="Happy Face" class = "chosen" style="display: none;">
+                    <img src="../figures/five.png" alt="Very Happy Face" class = "chosen" style="display: none;">
+                </div>
+            </div>
+        </div>
+
+        <img id="myImage" src="../figures/hand.png" alt="My Image">
+
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="./main.js" type="text/javascript"></script>
+    </body>
+</html>
