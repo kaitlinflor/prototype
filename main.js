@@ -113,8 +113,8 @@ function sendHandCommand(frame, target) {
     var top_pos = right_hand_y / 720  * 100;
     var right_pos = right_hand_x / 1280 * 100;
 
-    console.log("y_pos = " + right_hand_y);
-    console.log("y = " + top_pos);
+    // console.log("y_pos = " + right_hand_y);
+    // console.log("y = " + top_pos);
 
     document.getElementById('t').style.top = top_pos.toString().concat("%");
     document.getElementById('t2').style.top = (top_pos + .6).toString().concat("%");
@@ -122,7 +122,7 @@ function sendHandCommand(frame, target) {
 
     document.getElementById('t').style.right = right_pos.toString().concat("%");
     document.getElementById('t2').style.right = (right_pos + .43).toString().concat("%");
-    document.getElementById('t3').style.right = (right_pos - .45).toString().concat("%");
+    document.getElementById('t3').style.right = (right_pos + .45).toString().concat("%");
 
 }
 
