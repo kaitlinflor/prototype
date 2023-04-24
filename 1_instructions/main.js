@@ -1,8 +1,8 @@
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 
-var socket = new WebSocket("ws://cpsc484-03.yale.internal:8888/frames");
+var socket = new WebSocket("ws://cpsc484-04.yale.internal:8888/frames");
 
-var host = "cpsc484-03.yale.internal:8888";
+var host = "cpsc484-04.yale.internal:8888";
 
 $(document).ready(function() {
     frames.start();

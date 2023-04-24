@@ -1,8 +1,8 @@
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 
-var socket = new WebSocket("ws://cpsc484-03.yale.internal:8888/frames");
+var socket = new WebSocket("ws://cpsc484-04.yale.internal:8888/frames");
 
-var host = "cpsc484-03.yale.internal:8888";
+var host = "cpsc484-04.yale.internal:8888";
 
 $(document).ready(function() {
     frames.start();
@@ -136,7 +136,7 @@ function sendHandCommand(command) {
 
 function addBorder(number) {
     let images = document.getElementsByTagName("img");
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         if (i == number){
             images[i].style.border = "3px solid black"
         }
@@ -147,7 +147,7 @@ function addBorder(number) {
 }
 
 function removeBorder(number) {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         let images = document.getElementsByTagName("img");
         images[i].style.border = "3px solid white"
     }
@@ -181,6 +181,8 @@ function startTimer(number) {
                         image.style.display = "none";
                     }
                     });
+
+                
 
                 if (number == 3){
                     setTimeout(function() {

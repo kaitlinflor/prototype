@@ -1,8 +1,8 @@
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 
-var socket = new WebSocket("ws://cpsc484-03.yale.internal:8888/frames");
+var socket = new WebSocket("ws://cpsc484-04.yale.internal:8888/frames");
 
-var host = "cpsc484-03.yale.internal:8888";
+var host = "cpsc484-04.yale.internal:8888";
 
 $(document).ready(function() {
   frames.start();
@@ -10,6 +10,9 @@ $(document).ready(function() {
 });
 
 var command = null;
+
+const images = document.querySelectorAll("img.selector");
+
 
 var frames = {
   socket: null,
@@ -24,6 +27,7 @@ var frames = {
       }
     }
   },
+
 
 
   get_right_hand: function (frame) {
@@ -50,6 +54,7 @@ var frames = {
       // get all images with the class name "selector" on the page
     const images = document.querySelectorAll("img.selector");
 
+    console.log(cx)
     // loop through each image and check if the cursor is hovering over it
 
     for (let i = 0; i < images.length; i++) {
