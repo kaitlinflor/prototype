@@ -9,12 +9,14 @@ window.onload = function() {
 };
 
 
+
 $(document).ready(function() {
     frames.start();
     twod.start();
 });
 
 var command = null;
+var tracked_person_id = null;
 
 var frames = {
     socket: null,
@@ -33,15 +35,38 @@ var frames = {
 
 get_right_hand: function (frame) {
     if (frame.people.length < 1) {
-        var command = null;
-        return command;
+        return null;
     }
+    
+    if (tracked_person_id == null) {
+        // If we haven't started tracking anyone yet, track the first person
+        tracked_person_id = frame.people[0].body_id;
+    }
+
+    
+      // Find the person we're tracking
+    var tracked_person = null;
+    for (var i = 0; i < frame.people.length; i++) {
+    if (frame.people[i].body_id === tracked_person_id) {
+        tracked_person = frame.people[i];
+        break;
+    }
+    }
+
+    if (tracked_person === null) {
+    // If we couldn't find the person we're tracking, stop tracking
+    tracked_person_id = null;
+    return null;
+    console.log("COULDN'T FIND")
+    }
+
     command = null;
-    // Normalize by subtracting the root (pelvis) joint coordinates
+      // Normalize by subtracting the root (pelvis) joint coordinates
     var num_people = frame.people.length;
-    var right_hand_x = frame.people[num_people - 1].joints[15].position.x*(-1) + width/2;
-    var right_hand_y = frame.people[num_people - 1].joints[15].position.y;
-    var right_hand_z = frame.people[num_people - 1].joints[15].position.z*(-1);
+    var right_hand_x = tracked_person.joints[15].position.x*(-1) + width/2;
+    var right_hand_y = tracked_person.joints[15].position.y;
+    var right_hand_z = tracked_person.joints[15].position.z*(-1);
+
 
     let myImage = document.getElementById("myImage");
     myImage.style.left = right_hand_x + "px";
