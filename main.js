@@ -137,7 +137,7 @@ function getHandPos(frame, target) {
 
     const buttons = document.querySelectorAll("div.selector");
 
-    console.log("buttons = " + buttons.length);
+    // console.log("buttons = " + buttons.length);
 
     for (let i = 0; i < buttons.length; i++) {
 
@@ -185,20 +185,21 @@ function startTimer(number) {
             countdownTimer.innerHTML = `${time}`;
             if (time === 0) {
                 clearInterval(timerInterval);
-                document.getElementById("popup").style.display = "block";
-                document.getElementById("popup").style.pointerEvents = "auto";
+                // document.getElementById("popup").style.display = "block";
+                // document.getElementById("popup").style.pointerEvents = "auto";
 
-                const images = document.querySelectorAll(".chosen");
-                images.forEach((image, i) => {
-                if (i === number) {
-                    image.style.display = "block";
-                    } else {
-                        image.style.display = "none";
-                    }
-                    });
+                // const images = document.querySelectorAll(".chosen");
+                // images.forEach((image, i) => {
+                // if (i === number) {
+                //     image.style.display = "block";
+                //     } else {
+                //         image.style.display = "none";
+                //     }
+                //     });
 
 
                 if (number == 0){
+                    console.log("number = " + number);
                     setTimeout(function() {
                         window.location.href = "1_instructions/index.html";
                     }, 3000);
