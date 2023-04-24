@@ -208,3 +208,9 @@ body {
     left: 0%;
     visibility: hidden;
   }
+
+  .circle {
+
+    position: fixed;
+    top: 80%;
+  }

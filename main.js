@@ -33,7 +33,8 @@ var frames = {
 
                 if(is_present(JSON.parse(event.data), target) != null){
                     // console.log(target);
-                    sendHandCommand(JSON.parse(event.data), target);
+                    command = getHandPos(JSON.parse(event.data), target);
+                    sendHandCommand(command);
 
                 }
                 else {
@@ -103,7 +104,9 @@ function is_present(frame, target) {
 }
 
 
-function sendHandCommand(frame, target) {
+function getHandPos(frame, target) {
+
+    command = null;
 
     document.getElementById('curs').style.visibility = 'visible';
 
@@ -128,26 +131,89 @@ function sendHandCommand(frame, target) {
     document.getElementById('t2').style.right = (right_pos + .29).toString().concat("%");
     document.getElementById('t3').style.right = (right_pos - .45).toString().concat("%");
 
+    var curs_pos = document.getElementById('t').getBoundingClientRect();
+    var cx = curs_pos.left + curs_pos.width * 0.5;    // find center of first image
+    var cy = curs_pos.top + curs_pos.height * 0.5;
+
+    const buttons = document.querySelectorAll("div.selector");
+
+    console.log("buttons = " + buttons.length);
+
+    for (let i = 0; i < buttons.length; i++) {
+
+        const button = buttons[i];
+        const rect = button.getBoundingClientRect();
+
+        // check if the cursor is within the bounding box of the image
+        if (cx >= rect.left && cx <= rect.right && cy >= rect.top && cy <= rect.bottom) {
+            // console.log("Cursor is hovering over image", image);
+            command = i;
+            // console.log(command);
+        }
+
+        if (command == null) {
+
+            command = null;
+            resetTimer();
+        }
+
+        return command;
+    }
+
 }
 
-// var twod = {
-//     socket: null,
+function sendHandCommand(command) {
+    switch (command) {
+    case 0:
+        startTimer(0)
+        // addBorder(0)
+        break;
+    }
+}
 
-//     // create a connection to the camera feed
-//     start: function () {
-//         var url = "ws://" + host + "/twod";
-//         twod.socket = new WebSocket(url);
+let timerInterval = null;
+const startingTime = 3;
+let time = startingTime;
+const countdownTimer = document.getElementById("timer");
+const image_num = 0;
 
-//         // whenever a new frame is received...
-//         twod.socket.onmessage = function (event) {
+// Start Timer
+function startTimer(number) {
+    if (!timerInterval) {
+        timerInterval = setInterval(() => {
+            time--;
+            countdownTimer.innerHTML = `${time}`;
+            if (time === 0) {
+                clearInterval(timerInterval);
+                document.getElementById("popup").style.display = "block";
+                document.getElementById("popup").style.pointerEvents = "auto";
 
-//             // parse and show the raw data
-//             twod.show(JSON.parse(event.data));
-//         }
-//     },
+                const images = document.querySelectorAll(".chosen");
+                images.forEach((image, i) => {
+                if (i === number) {
+                    image.style.display = "block";
+                    } else {
+                        image.style.display = "none";
+                    }
+                    });
 
-//     // show the image by adjusting the source attribute of the HTML img object previously created
-//     show: function (twod) {
-//         $('img.twod').attr("src", 'data:image/pnjpegg;base64,' + twod.src);
-//     },
-// };
+
+                if (number == 0){
+                    setTimeout(function() {
+                        window.location.href = "1_instructions/index.html";
+                    }, 3000);
+                }
+
+            }
+        }, 1000);
+    }
+}
+
+
+// Reset Timer
+function resetTimer() {
+    time = startingTime;
+    countdownTimer.innerHTML = `${time}`;
+    clearInterval(timerInterval);
+    timerInterval = null;
+}
