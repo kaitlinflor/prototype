@@ -38,7 +38,7 @@ var frames = {
     if (frame.people.length < 1) {
       return null;
     }
-  
+
     if (tracked_person_id == null) {
       var min_z = Number.MAX_SAFE_INTEGER;
       for (var i = 0; i < frame.people.length; i++) {
@@ -52,7 +52,7 @@ var frames = {
       // tracked_person_id = frame.people[0].body_id;
     }
 
-  
+
     // Find the person we're tracking
     var tracked_person = null;
     for (var i = 0; i < frame.people.length; i++) {
@@ -61,7 +61,7 @@ var frames = {
         break;
       }
     }
-  
+
     if (tracked_person === null) {
       // If we couldn't find the person we're tracking, stop tracking
       tracked_person_id = null;
@@ -79,11 +79,11 @@ var frames = {
     let myImage = document.getElementById("myImage");
     myImage.style.left = right_hand_x + "px";
     myImage.style.top = right_hand_y + "px";
-    
+
     var rect1 = myImage.getBoundingClientRect();
     var cx = rect1.left + rect1.width * 0.5;    // find center of first image
     var cy = rect1.top + rect1.height * 0.5;
-    
+
       // get all images with the class name "selector" on the page
     const images = document.querySelectorAll("img.selector");
 
@@ -110,7 +110,7 @@ var frames = {
 
 
     return command;
-    
+
   }
 };
 
@@ -220,7 +220,7 @@ function startTimer(number) {
                 setTimeout(function() {
                   window.location.href = "../3_trivia1/index.html";
                 }, 3000);
-                
+
             }
         }, 1000);
     }

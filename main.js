@@ -26,6 +26,7 @@ var frames = {
 
             if(target == null){
                 target = frames.detect_target(JSON.parse(event.data));
+                sessionStorage.setItem('target', target);
                 console.log("Checking");
             }
 
@@ -39,6 +40,7 @@ var frames = {
                 }
                 else {
                     target = null;
+                    sessionStorage.setItem('target', null);
                     document.getElementById('curs').style.visibility = 'hidden';
                 }
 
