@@ -39,21 +39,28 @@
                 <h3>Returning to landing page in...</h3>
                 <div class="circle" id="timer">3</div>
                 <h4>(Raise hand to continue)</h4>
-
-s
-
             </div> -->
+
+            <div id="warning" class="">
+                <h2>No player detected!</h2>
+                <img id="warn" src="../figures/warning.png" alt="Warning sign">
+                <h3>Returning to landing page in...<h3>
+                <h3 id="countdown">3</h3>
+            </div> 
         </div>
 
         <script>
+            window.instructions = "./instructions/index.html"
             window.next_page = "./instructions/index.html"
             window.question = 0
         </script>
         <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="main.js" type="text/javascript"></script>
         <script src="./src/borders.js" type="text/javascript"></script>
-        <script src="./src/timer.js" type=""text/javascript"></script>
+        <!-- <script src="./src/timer.js" type=""text/javascript"></script> -->
         <script src="./src/detection.js" type=""text/javascript"></script>
+        <script src="./src/wait_pages.js" type=""text/javascript"></script>
+
         <!-- <script src="./src/kinect.js" type=""text/javascript"></script> -->
 
     </body>

@@ -1,8 +1,11 @@
-// Server_Name = cpsc484-02.yale.internal
-// var socket = new WebSocket("ws://cpsc484-03.yale.internal:8888/frames");
-// var socket = new WebSocket("ws://[Server_Name]:8888/frames");
-var host = "cpsc484-03.yale.internal:8888";
-// var host = "127.0.0.1:4444";
+var stop = 0;
+
+let health_score = 0;
+let quiz_score = 0;
+localStorage.setItem('health_score', health_score)
+localStorage.setItem('quiz_score', quiz_score)
+
+var host = "cpsc484-02.yale.internal:8888";
 
 var target = null;
 
@@ -10,6 +13,7 @@ $(document).ready(function () {
     frames.start();
     // twod.start();
 });
+
 
 var frames = {
     socket: null,
@@ -19,30 +23,74 @@ var frames = {
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function (event) {
             // frames.show(JSON.parse(event.data));
-
-            if(target == null){
-                target = detect_target(JSON.parse(event.data));
-                localStorage.setItem('target', target)
-                console.log("Checking");
-            }
-
-            if (target !== null) {
-
-                if(is_present(JSON.parse(event.data), target) != null){
-                    // console.log(target);
-                    command = getHandPos(JSON.parse(event.data), target);
-                    sendHandCommand(command);
-
+            if (stop == 0){
+                console.log(target)
+                if(target == null){
+                    target = detect_target(JSON.parse(event.data));
+                    localStorage.setItem('target', target)
+                    console.log("Checking");
                 }
-                else {
-                    target = null;
-                    document.getElementById('curs').style.visibility = 'hidden';
+
+                if (target !== null) {
+
+                    if(is_present(JSON.parse(event.data), target) != null){
+                        // console.log(target);
+                        console.log("PRESENT")
+                        command = getHandPos(JSON.parse(event.data), target);
+                        sendHandCommand(command);
+
+                    }
+                    else {
+
+                        frames.stop()
+                    }
                 }
 
             }
         }
+    },
+    stop: function(){
+        stop = 1;
+        console.log("MISSING PERSON!")
+        var warning = document.getElementById("warning");
+        warning.style.display = "block";
+        waitPageCountdown(3, 'index.html');
+        document.getElementById('curs').style.visibility = 'hidden';
     }
 }
+// var frames = {
+//     socket: null,
+
+//     start: function () {
+//         var url = "ws://" + host + "/frames";
+//         frames.socket = new WebSocket(url);
+//         frames.socket.onmessage = function (event) {
+//             // frames.show(JSON.parse(event.data));
+
+//             if(target == null){
+//                 target = detect_target(JSON.parse(event.data));
+//                 localStorage.setItem('target', target)
+//                 console.log("Checking");
+//             }
+
+//             if (target !== null) {
+
+//                 if(is_present(JSON.parse(event.data), target) != null){
+//                     // console.log(target);
+//                     command = getHandPos(JSON.parse(event.data), target);
+//                     sendHandCommand(command);
+
+//                 }
+//                 else {
+//                     target = null;
+//                     document.getElementById('curs').style.visibility = 'hidden';
+//                 }
+
+//             }
+//         }
+//     }
+// }
+
 
 //     // show: function (frame) {
 //     //     console.log(frame);
@@ -154,6 +202,12 @@ function sendHandCommand(command) {
     }
 }
 
+let timerInterval = null;
+const startingTime = 3;
+let time = startingTime;
+const countdownTimer = document.getElementById("timer");
+const image_num = 0;
+
 
 // Start Timer
 function startTimer(number) {
@@ -163,31 +217,15 @@ function startTimer(number) {
             countdownTimer.innerHTML = `${time}`;
             if (time === 0) {
                 clearInterval(timerInterval);
-                // document.getElementById("popup").style.display = "block";
-                // document.getElementById("popup").style.pointerEvents = "auto";
-
-                // const images = document.querySelectorAll(".chosen");
-                // images.forEach((image, i) => {
-                // if (i === number) {
-                //     image.style.display = "block";
-                //     } else {
-                //         image.style.display = "none";
-                //     }
-                //     });
-
-
                 if (number == 0){
                     console.log("number = " + number);
-                    setTimeout(function() {
-                        window.location.href = "1_instructions/index.html";
-                    }, 3000);
+                    window.location.assign(window.instructions);
                 }
 
             }
         }, 1000);
     }
 }
-
 
 // Reset Timer
 function resetTimer() {
