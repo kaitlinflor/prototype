@@ -3,6 +3,12 @@ var host = "cpsc484-03.yale.internal:8888";
 var target = localStorage.getItem('target');
 var stop = 0;
 
+health_score = localStorage.getItem('health_score');
+quiz_score = localStorage.getItem('quiz_score');
+
+console.log("Health score : " + health_score)
+console.log("Quiz score :" + quiz_score)
+
 $(document).ready(function () {
     frames.start();
 });
@@ -50,7 +56,7 @@ function goNextPage(number){
     // If we are doing trivia, then go to either correct or incorrect and add
     // approrpriate point to score
     if (window.trivia == 1){
-        if (number == window.correct_number){
+        if (number == window.number){
             // Update Quiz Score
             quiz_score = localStorage.getItem('quiz_score');
             quiz_score = +quiz_score + 1;
@@ -64,10 +70,8 @@ function goNextPage(number){
     }
     else{
         health_score = localStorage.getItem('health_score');
-        console.log(typeof(health_score))
-        console.log(health_score)
         health_score = +health_score + 1 + +number;
-        console.log(typeof(health_score))
+        console.log(health_score)
         localStorage.setItem('health_score', health_score)
         window.location.assign(window.next_page);
     }

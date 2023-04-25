@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HCI Prototype</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div id="curs" class="cursor">
+            <div id="t" class="triangle"></div>
+            <div id="t2" class="triangle2"></div>
+            <div id="t3" class="triangle3"></div>
+        </div>
+
+        <div>
+            <div class="diagonal-box">
+                <div class="content"> </div>
+            </div>
+            <div class="diagonal-box2">
+                <div class="content"> </div>
+            </div>
+            <div class="diagonal-box3">
+                <div class="content"> </div>
+            </div>
+            <div class="diagonal-box4">
+                <div class="content"> </div>
+            </div>
+        </div>
+
+        <div id="intro-text">
+            <div class="circle" id="timer">3</div>
+            <h1>How much has the demand for counseling services<br>increased compared to increase in enrollment?</h1>
+            <div class="container">
+                <div id="button1" class="selector">3 times</div>
+                <div id="button2" class="selector">5 times</div>
+            </div>
+            <div class="container">
+                <div id="button1" class="selector">7 times</div>
+                <div id="button2" class="selector">9 times</div>
+            </div>
+            <div id="warning" class="">
+                <h2>No player detected!</h2>
+                <img id="warn" src="../figures/warning.png" alt="Warning sign">
+                <h3>Returning to landing page in...<h3>
+                <h3 id="countdown">3</h3>
+            </div> 
+        </div>
+
+
+        <div id="popup">
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h1>You chose answer:</h1>
+                    <p class = "chosen" style="display: none;">3 times</p>
+                    <p class = "chosen" style="display: none;">5 times</p>
+                    <p class = "chosen" style="display: none;">7 times</p>
+                    <p class = "chosen" style="display: none;">9 times</p>
+
+                    <!-- <img src="../figures/44.png" class = "chosen" style="display: none;">
+                    <img src="../figures/56.png" class = "chosen" style="display: none;">
+                    <img src="../figures/32.png" class = "chosen" style="display: none;">
+                    <img src="../figures/23.png" class = "chosen" style="display: none;"> -->
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.number = 1;
+            window.question = 1;
+            window.trivia = 1;
+            window.incorrect = '../incorrect/incorrect5.html'
+            window.correct = '../correct/correct5.html'
+            window.next_page = '../trivia/index.html'
+        </script>
+
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+        <script src="../src/questions.js" type="text/javascript"></script>
+        <script src="../src/borders.js" type="text/javascript"></script>
+        <script src="../src/colors.js" type="text/javascript"></script>
+        <script src="../src/timer.js" type="text/javascript"></script>
+        <script src="../src/detection.js" type="text/javascript"></script>
+        <script src="../src/kinect.js" type="text/javascript"></script>
+        <script src="../src/wait_pages.js" type=""text/javascript"></script>
+
+    </body>
+</html>

@@ -13,3 +13,5 @@ else if (health_score >= 9 && health_score <= 18) {
 else if (health_score >= 19 && health_score <= 25) {
     document.getElementById("advice").innerHTML = "You might be going through a pretty hard time. Please reach out to your friends and family as well as a mental health professional, like a therapist or counselor, even if it may seem scary at first. It’s important to ask others for help, and no one will judge or condemn you for doing so. To the right, you’ll find the contact information for Yale Mental Health Care.";
 }
+
+waitPageCountdown(15, "../index.html")

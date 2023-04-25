@@ -168,3 +168,16 @@ body {
       overflow: hidden;
       z-index: 1;
   }
+
+  #countdown_text, #countdown {
+    display: inline-block;
+    width: 180px; /* adjust as needed */
+    color:rgb(255, 255, 255);
+  }
+  /* #countdown_text {
+    color:rgb(255, 255, 255)
+  }
+
+  #countdown {
+    color:rgb(255, 255, 255)
+  } */
