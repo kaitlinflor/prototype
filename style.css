@@ -1,33 +1,69 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-#intro-text {
-    width: 100%;
+.header {
+    height: 150px;
+    background-color: #F5B365;
     text-align: center;
-    margin-top: 0px;
+    vertical-align: middle;
+    line-height: 150px;   
+    font-size: 50px;
+
 }
 
-#intro-text h1 {
-    font-size: 40px;
-    color: rgb(0, 0, 0);
-    background-color: #e89135;
-    padding: 30px;
-    display: block;
-}
-
-#intro-text p {
-    font-size: 20px;
-    color: rgb(0, 0, 0);
-    padding: 50px;
-    display: block;
-}
-
-#intro-text h2 {
-    font-size: 40px;
-    color: rgb(0, 0, 0);
-    background-color: #795c74;
+.description {
     padding: 10px;
-    display: block;
+    height: 100px;
+    vertical-align: middle;
+    line-height: 100px;
+    font-size: 30px;
+
+
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+
+    height: 500px;
+  }
+  
+  .advicebox {
+    width: 900px; /* subtract 10px for padding/margin */
+    height: auto; /* set your desired height */
+    background-color: #A7AEE5; /* set your desired background color */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 400px;
+    font-size: 70px;
+    margin: 40px;
+  }
+  
+  .qrcodes {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .top {
+    flex-basis: 50%;
+    text-align: center;
+    font-size: 20px;
+   
+
+  }
+  
+  .bottom {
+    flex-basis: 50%;
+    text-align: center;
+    font-size: 20px;
+
+  }
+  
+  .qr {
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+    line-height: 100px;
+    border: 2px solid black;
+    margin-left: 200px;
+    margin-top: 40px
+
+  }
