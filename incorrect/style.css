@@ -25,6 +25,10 @@ body {
     font-family: 'ABCDiatype';
     color: rgb(0, 0, 0);
     background-color: #ff0000;
+    margin: auto;
+    margin-top: 1%;
+    border-radius: 60px;
+    width: 40%;
     padding: 30px;
     display: block;
     position: relative;
@@ -32,11 +36,12 @@ body {
 }
 
 #intro-text p {
-    font-size: 40px;
+    font-size: 80px;
     font-family: 'ABCDiatype';
     color: rgb(255, 255, 255);
     padding: 50px;
     display: block;
+    margin: auto;
 }
 
 #intro-text h2 {
