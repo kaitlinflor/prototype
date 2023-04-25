@@ -109,8 +109,8 @@ body {
     padding-right: 80px;
     width: 5px;
     text-align: center;
-    border-top-left-radius: 35px;
-    border-bottom-left-radius: 35px;
+    border-top-left-radius: 55px;
+    border-bottom-left-radius: 55px;
     border: none;
 }
 
@@ -150,8 +150,8 @@ body {
     padding-right: 80px;
     width: 5px;
     text-align: center;
-    border-top-right-radius: 35px;
-    border-bottom-right-radius: 35px;
+    border-top-right-radius: 55px;
+    border-bottom-right-radius: 55px;
     border: none;
 }
 
