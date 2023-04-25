@@ -22,6 +22,7 @@ var frames = {
 
             if(target == null){
                 target = detect_target(JSON.parse(event.data));
+                localStorage.setItem('target', target)
                 console.log("Checking");
             }
 

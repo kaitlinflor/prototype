@@ -1,6 +1,6 @@
 var host = "cpsc484-03.yale.internal:8888";
 
-var target = null;
+var target = localStorage.getItem('target');
 
 $(document).ready(function () {
     frames.start();
