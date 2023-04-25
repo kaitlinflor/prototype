@@ -6,10 +6,6 @@ var host = "cpsc484-03.yale.internal:8888";
 
 var target = null;
 
-window.onload = function() {
-    setup();
-  };
-
 $(document).ready(function () {
     frames.start();
     // twod.start();
@@ -25,8 +21,8 @@ var frames = {
             // frames.show(JSON.parse(event.data));
 
             if(target == null){
-                target = frames.detect_target(JSON.parse(event.data));
-                sessionStorage.setItem('target', target);
+                target = detect_target(JSON.parse(event.data));
+                localStorage.setItem('target', target)
                 console.log("Checking");
             }
 
@@ -40,70 +36,56 @@ var frames = {
                 }
                 else {
                     target = null;
-                    sessionStorage.setItem('target', null);
                     document.getElementById('curs').style.visibility = 'hidden';
                 }
 
             }
         }
-    },
-
-    // show: function (frame) {
-    //     console.log(frame);
-    // }
-
-    detect_target: function (frame) {
-        var command = null;
-        if (frame.people.length < 1) {
-          return command;
-        }
-
-        // Normalize by subtracting the root (pelvis) joint coordinates
-
-        for (let i = 0; i < frame.people.length; i++){
-
-            // var pelvis_x = frame.people[i].joints[0].position.x;
-            var pelvis_y = frame.people[i].joints[0].position.y;
-            var pelvis_z = frame.people[i].joints[0].position.z;
-            var right_hand_y = (frame.people[i].joints[15].position.y - pelvis_y) * -1;
-            var right_hand_z = (frame.people[i].joints[15].position.z - pelvis_z) * -1;
-
-            if (right_hand_z >= 120 && right_hand_y > 700) {
-                return frame.people[i].body_id;
-            }
-
-        }
-        return command;
-      }
-};
-
-
-function setup() {
-    // get the dimensions of the parent HTML element
-    height = document.getElementById('sketch-holder').clientHeight;
-    width = document.getElementById('sketch-holder').clientWidth;
-
-    // create canvas
-    var canvas = createCanvas(width, height);
-
-    // stretch canvas to fit dimensions of parent
-    canvas.parent('sketch-holder');
-    canvas.width = width;
-    canvas.height = height;
-}
-
-function is_present(frame, target) {
-
-    for (let i = 0; i < frame.people.length; i++){
-
-        if (frame.people[i].body_id == target){
-
-            return i;
-        }
     }
-
-    return null;
 }
+
+//     // show: function (frame) {
+//     //     console.log(frame);
+//     // }
+
+//     detect_target: function (frame) {
+//         var command = null;
+//         if (frame.people.length < 1) {
+//             return command;
+//         }
+
+//         // Normalize by subtracting the root (pelvis) joint coordinates
+
+//         for (let i = 0; i < frame.people.length; i++){
+
+//             // var pelvis_x = frame.people[i].joints[0].position.x;
+//             var pelvis_y = frame.people[i].joints[0].position.y;
+//             var pelvis_z = frame.people[i].joints[0].position.z;
+//             var right_hand_y = (frame.people[i].joints[15].position.y - pelvis_y) * -1;
+//             var right_hand_z = (frame.people[i].joints[15].position.z - pelvis_z) * -1;
+
+//             if (right_hand_z >= 120 && right_hand_y > 700) {
+//                 return frame.people[i].body_id;
+//             }
+
+//         }
+//         return command;
+//     }
+// };
+
+
+// function is_present(frame, target) {
+
+//     for (let i = 0; i < frame.people.length; i++){
+
+//         if (frame.people[i].body_id == target){
+
+//             return i;
+//         }
+//     }
+
+//     return null;
+// }
 
 
 function getHandPos(frame, target) {
@@ -154,30 +136,24 @@ function getHandPos(frame, target) {
         }
 
         if (command == null) {
-
             command = null;
             resetTimer();
+            removeColor();
         }
 
         return command;
     }
-
 }
 
 function sendHandCommand(command) {
     switch (command) {
     case 0:
         startTimer(0)
-        // addBorder(0)
+        changeColor(0)
         break;
     }
 }
 
-let timerInterval = null;
-const startingTime = 3;
-let time = startingTime;
-const countdownTimer = document.getElementById("timer");
-const image_num = 0;
 
 // Start Timer
 function startTimer(number) {
@@ -219,4 +195,25 @@ function resetTimer() {
     countdownTimer.innerHTML = `${time}`;
     clearInterval(timerInterval);
     timerInterval = null;
+}
+
+
+function removeColor(number) {
+
+    const buttons = document.querySelectorAll("div.selector");
+    document.getElementById('timer').style.visibility = 'hidden';
+
+    for (let i = 0; i < buttons.length; i++){
+        buttons[i].style.backgroundColor = '#5db492';
+    }
+}
+
+
+
+function changeColor(number) {
+
+    const buttons = document.querySelectorAll("div.selector");
+    document.getElementById('timer').style.visibility = 'visible';
+
+    buttons[number].style.backgroundColor = '#4b816c';
 }

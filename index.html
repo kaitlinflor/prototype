@@ -26,7 +26,9 @@
                 <div class="content"> </div>
             </div>
         </div>
+
         <div id="intro-text">
+            <div class="circle" id="timer">3</div>
             <h1>Interactive<br>Health Quiz</h1>
             <p>See how well you are maintaining your<br>health by answering this short quiz!<br><br>(Raise Your Hand to Begin Interaction)</p>
             <!-- <img id="pose1" src="/images/imageedit_1_6885319470.png" alt="Person with raised hand"> -->
@@ -42,9 +44,17 @@ s
 
             </div> -->
         </div>
-        <div class="circle" id="timer">3</div>
 
+        <script>
+            window.next_page = "./instructions/index.html"
+            window.question = 0
+        </script>
         <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="main.js" type="text/javascript"></script>
+        <script src="./src/borders.js" type="text/javascript"></script>
+        <script src="./src/timer.js" type=""text/javascript"></script>
+        <script src="./src/detection.js" type=""text/javascript"></script>
+        <!-- <script src="./src/kinect.js" type=""text/javascript"></script> -->
+
     </body>
 </html>
