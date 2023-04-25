@@ -25,17 +25,17 @@ function getHandPos(frame, target) {
 
     const buttons = document.querySelectorAll(".selector");
 
-    console.log("X : " + cx)
-    console.log("Y : " + cy)
+    // console.log("X : " + cx)
+    // console.log("Y : " + cy)
 
     for (let i = 0; i < buttons.length; i++) {
-        console.log(i)
+        // console.log(i)
 
         const button = buttons[i];
         const rect = button.getBoundingClientRect();
 
-        console.log("LEFT : " + rect.left + " RIGHT : " + rect.right)
-        console.log("BOTTOM : " + rect.bottom + " TOP : " + rect.top)
+        // console.log("LEFT : " + rect.left + " RIGHT : " + rect.right)
+        // console.log("BOTTOM : " + rect.bottom + " TOP : " + rect.top)
 
         // check if the cursor is within the bounding box of the image
         if (cx >= rect.left && cx <= rect.right && cy >= rect.top && cy <= rect.bottom) {
@@ -43,7 +43,7 @@ function getHandPos(frame, target) {
             break;
             // console.log(command);
         }
-        console.log("COMMAND : " + command)
+        // console.log("COMMAND : " + command)
 
     }
     if (command == null) {

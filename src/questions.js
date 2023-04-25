@@ -1,4 +1,4 @@
-var host = "cpsc484-02.yale.internal:8888";
+var host = "cpsc484-03.yale.internal:8888";
 
 var target = localStorage.getItem('target');
 var stop = 0;
@@ -53,7 +53,7 @@ function goNextPage(number){
         if (number == window.correct_number){
             // Update Quiz Score
             quiz_score = localStorage.getItem('quiz_score');
-            quiz_score = Number(quiz_score) + 1;
+            quiz_score = +quiz_score + 1;
             localStorage.setItem('quiz_score', quiz_score)
 
             window.location.assign(window.correct);
@@ -64,7 +64,10 @@ function goNextPage(number){
     }
     else{
         health_score = localStorage.getItem('health_score');
-        health_score = health_score + 1 + number;
+        console.log(typeof(health_score))
+        console.log(health_score)
+        health_score = +health_score + 1 + +number;
+        console.log(typeof(health_score))
         localStorage.setItem('health_score', health_score)
         window.location.assign(window.next_page);
     }

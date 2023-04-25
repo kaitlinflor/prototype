@@ -33,25 +33,26 @@ function startTimer(number) {
 
                     // If we are doing trivia, then go to either correct or incorrect and add
                     // approrpriate point to score
-                    if (window.trivia == 1){
-                        if (number == window.correct_number){
-                            // Update Quiz Score
-                            quiz_score = localStorage.getItem('quiz_score');
-                            quiz_score = quiz_score + 1;
-                            localStorage.setItem('quiz_score', quiz_score)
+                    goNextPage(number);
+                    // if (window.trivia == 1){
+                    //     if (number == window.correct_number){
+                    //         // Update Quiz Score
+                    //         quiz_score = localStorage.getItem('quiz_score');
+                    //         quiz_score = quiz_score + 1;
+                    //         localStorage.setItem('quiz_score', quiz_score)
 
-                            window.location.assign(window.correct);
-                        }
-                        else {
-                            window.location.assign(window.incorrect);
-                        }
-                    }
-                    else{
-                        health_score = localStorage.getItem('health_score');
-                        health_score = health_score + 1 + number;
-                        localStorage.setItem('health_score', health_score)
-                        window.location.assign(window.next_page);
-                    }
+                    //         window.location.assign(window.correct);
+                    //     }
+                    //     else {
+                    //         window.location.assign(window.incorrect);
+                    //     }
+                    // }
+                    // else{
+                    //     health_score = localStorage.getItem('health_score');
+                    //     health_score = health_score + 1 + number;
+                    //     localStorage.setItem('health_score', health_score)
+                    //     window.location.assign(window.next_page);
+                    // }
                     // window.location.href = window.next_page;
                 }, 3000);
                 // }

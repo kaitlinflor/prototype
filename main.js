@@ -5,7 +5,7 @@ let quiz_score = 0;
 localStorage.setItem('health_score', health_score)
 localStorage.setItem('quiz_score', quiz_score)
 
-var host = "cpsc484-02.yale.internal:8888";
+var host = "cpsc484-03.yale.internal:8888";
 
 var target = null;
 

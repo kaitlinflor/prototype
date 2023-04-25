@@ -38,28 +38,34 @@
                 <div id="button1" class="selector">C. 32%</div>
                 <div id="button2" class="selector">D. 23%</div>
             </div>
+            <div id="warning" class="">
+                <h2>No player detected!</h2>
+                <img id="warn" src="../figures/warning.png" alt="Warning sign">
+                <h3>Returning to landing page in...<h3>
+                <h3 id="countdown">3</h3>
+            </div> 
         </div>
 
-        <div id="warning" class="">
-            <h2>No player detected!</h2>
-            <img id="warn" src="../figures/warning.png" alt="Warning sign">
-            <h3>Returning to landing page in...<h3>
-            <h3 id="countdown">3</h3>
-        </div> 
 
         <div id="popup">
             <div class="overlay">
                 <div class="overlay-content">
                     <h1>You chose answer:</h1>
-                    <img src="../figures/44.png" class = "chosen" style="display: none;">
+                    <p class = "chosen" style="display: none;">44</p>
+                    <p class = "chosen" style="display: none;">56</p>
+                    <p class = "chosen" style="display: none;">32</p>
+                    <p class = "chosen" style="display: none;">23</p>
+
+                    <!-- <img src="../figures/44.png" class = "chosen" style="display: none;">
                     <img src="../figures/56.png" class = "chosen" style="display: none;">
                     <img src="../figures/32.png" class = "chosen" style="display: none;">
-                    <img src="../figures/23.png" class = "chosen" style="display: none;">
+                    <img src="../figures/23.png" class = "chosen" style="display: none;"> -->
                 </div>
             </div>
         </div>
 
         <script>
+            window.number = 0;
             window.question = 1;
             window.trivia = 1;
             window.incorrect = '../incorrect/index.html'
