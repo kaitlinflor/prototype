@@ -30,7 +30,17 @@ function startTimer(number) {
                 setTimeout(function() {
                     console.log("CHANGING PAGES")
                     console.log(window.next_page)
-                    window.location.assign(window.next_page);
+                    if (window.trivia == 1){
+                        if (number == window.number){
+                            window.location.assign(window.correct);
+                        }
+                        else {
+                            window.location.assign(window.incorrect);
+                        }
+                    }
+                    else{
+                        window.location.assign(window.next_page);
+                    }
                     // window.location.href = window.next_page;
                 }, 3000);
                 // }
