@@ -1,6 +1,14 @@
-// Server_Name = cpsc484-02.yale.internal
-// var socket = new WebSocket("ws://cpsc484-03.yale.internal:8888/frames");
-// var socket = new WebSocket("ws://[Server_Name]:8888/frames");
+let timerInterval = null;
+const startingTime = 3;
+let time = startingTime;
+const countdownTimer = document.getElementById("timer");
+const image_num = 0;
+
+let health_score = 0;
+let quiz_score = 0;
+localStorage.setItem('health_score', health_score)
+localStorage.setItem('quiz_score', quiz_score)
+
 var host = "cpsc484-03.yale.internal:8888";
 // var host = "127.0.0.1:4444";
 
@@ -43,49 +51,6 @@ var frames = {
         }
     }
 }
-
-//     // show: function (frame) {
-//     //     console.log(frame);
-//     // }
-
-//     detect_target: function (frame) {
-//         var command = null;
-//         if (frame.people.length < 1) {
-//             return command;
-//         }
-
-//         // Normalize by subtracting the root (pelvis) joint coordinates
-
-//         for (let i = 0; i < frame.people.length; i++){
-
-//             // var pelvis_x = frame.people[i].joints[0].position.x;
-//             var pelvis_y = frame.people[i].joints[0].position.y;
-//             var pelvis_z = frame.people[i].joints[0].position.z;
-//             var right_hand_y = (frame.people[i].joints[15].position.y - pelvis_y) * -1;
-//             var right_hand_z = (frame.people[i].joints[15].position.z - pelvis_z) * -1;
-
-//             if (right_hand_z >= 120 && right_hand_y > 700) {
-//                 return frame.people[i].body_id;
-//             }
-
-//         }
-//         return command;
-//     }
-// };
-
-
-// function is_present(frame, target) {
-
-//     for (let i = 0; i < frame.people.length; i++){
-
-//         if (frame.people[i].body_id == target){
-
-//             return i;
-//         }
-//     }
-
-//     return null;
-// }
 
 
 function getHandPos(frame, target) {
@@ -179,7 +144,7 @@ function startTimer(number) {
                 if (number == 0){
                     console.log("number = " + number);
                     setTimeout(function() {
-                        window.location.href = "1_instructions/index.html";
+                        window.location.assign(window.next_page);
                     }, 3000);
                 }
 
@@ -196,11 +161,3 @@ function resetTimer() {
     clearInterval(timerInterval);
     timerInterval = null;
 }
-
-
-// function removeBorder(number) {
-//     for (let i = 0; i < 4; i++) {
-//         let images = document.getElementsByTagName("img");
-//         images[i].style.border = "3px solid white"
-//     }
-// }
