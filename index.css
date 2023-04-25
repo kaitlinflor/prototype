@@ -89,7 +89,8 @@ body {
     margin-left: 150px;
 }
 
-.popup {
+#warning {
+    display: none;
     width: 400px;
     background-color: rgb(255, 255, 255);
     border-radius: 6px;

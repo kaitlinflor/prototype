@@ -3,6 +3,7 @@ const startingTime = 3;
 let time = startingTime;
 const countdownTimer = document.getElementById("timer");
 const image_num = 0;
+var stop = 0;
 
 let health_score = 0;
 let quiz_score = 0;
@@ -16,7 +17,6 @@ var target = null;
 
 $(document).ready(function () {
     frames.start();
-    // twod.start();
 });
 
 var frames = {
@@ -27,28 +27,39 @@ var frames = {
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function (event) {
             // frames.show(JSON.parse(event.data));
-
-            if(target == null){
-                target = detect_target(JSON.parse(event.data));
-                localStorage.setItem('target', target)
-                console.log("Checking");
-            }
-
-            if (target !== null) {
-
-                if(is_present(JSON.parse(event.data), target) != null){
-                    // console.log(target);
-                    command = getHandPos(JSON.parse(event.data), target);
-                    sendHandCommand(command);
-
+            if (stop == 0){
+                console.log(target)
+                if(target == null){
+                    target = detect_target(JSON.parse(event.data));
+                    localStorage.setItem('target', target)
+                    console.log("Checking");
                 }
-                else {
-                    target = null;
-                    document.getElementById('curs').style.visibility = 'hidden';
+
+                if (target !== null) {
+
+                    if(is_present(JSON.parse(event.data), target) != null){
+                        // console.log(target);
+                        console.log("PRESENT")
+                        command = getHandPos(JSON.parse(event.data), target);
+                        sendHandCommand(command);
+
+                    }
+                    else {
+
+                        frames.stop()
+                    }
                 }
 
             }
         }
+    },
+    stop: function(){
+        stop = 1;
+        console.log("MISSING PERSON!")
+        var warning = document.getElementById("warning");
+        warning.style.display = "block";
+        waitPageCountdown(3, 'index.html');
+        document.getElementById('curs').style.visibility = 'hidden';
     }
 }
 
@@ -63,14 +74,8 @@ function getHandPos(frame, target) {
     var right_hand_x = frame.people[person].joints[15].pixel.x;
     var right_hand_y = frame.people[person].joints[15].pixel.y;
 
-    // var display_x = right_hand_x * (1920/1280);
-    // var display_y = right_hand_y * (1080/720);
-
     var top_pos = right_hand_y / 720  * 100;
     var right_pos = right_hand_x / 1280 * 100;
-
-    // console.log("y_pos = " + right_hand_y);
-    // console.log("y = " + top_pos);
 
     document.getElementById('t').style.top = top_pos.toString().concat("%");
     document.getElementById('t2').style.top = (top_pos + .6).toString().concat("%");
@@ -85,8 +90,6 @@ function getHandPos(frame, target) {
     var cy = curs_pos.top + curs_pos.height * 0.5;
 
     const buttons = document.querySelectorAll("div.selector");
-
-    // console.log("buttons = " + buttons.length);
 
     for (let i = 0; i < buttons.length; i++) {
 
@@ -128,23 +131,10 @@ function startTimer(number) {
             countdownTimer.innerHTML = `${time}`;
             if (time === 0) {
                 clearInterval(timerInterval);
-                // document.getElementById("popup").style.display = "block";
-                // document.getElementById("popup").style.pointerEvents = "auto";
-
-                // const images = document.querySelectorAll(".chosen");
-                // images.forEach((image, i) => {
-                // if (i === number) {
-                //     image.style.display = "block";
-                //     } else {
-                //         image.style.display = "none";
-                //     }
-                //     });
-
-
                 if (number == 0){
                     console.log("number = " + number);
                     setTimeout(function() {
-                        window.location.assign(window.next_page);
+                        window.location.assign(window.instructions);
                     }, 3000);
                 }
 

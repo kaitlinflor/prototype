@@ -36,3 +36,7 @@ function is_present(frame, target) {
     return null;
 }
 
+function showWarning() {
+    var warning = document.getElementById("warning");
+    warning.display = "block";
+}

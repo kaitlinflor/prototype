@@ -28,6 +28,13 @@
             <img src="../figures/five.png" alt="Strongly Agree" class = "selector">
             <div class = "agree-text">Strongly Agree</div>
         </div>
+
+        <div id="warning" class="">
+            <h2>No player detected!</h2>
+            <img id="warn" src="../figures/warning.png" alt="Warning sign">
+            <h3>Returning to landing page in...<h3>
+            <h3 id="countdown">3</h3>
+        </div> 
         
 
         <div class="circle" id="timer">3</div>
@@ -46,6 +53,7 @@
         </div>
 
 
+        
         <script>
             window.question = 1;
             window.trivia = 0;
@@ -58,5 +66,7 @@
         <script src="../src/timer.js" type=""text/javascript"></script>
         <script src="../src/detection.js" type=""text/javascript"></script>
         <script src="../src/kinect.js" type=""text/javascript"></script>
+        <script src="../src/wait_pages.js" type=""text/javascript"></script>
+
     </body>
 </html>

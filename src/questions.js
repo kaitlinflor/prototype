@@ -1,6 +1,7 @@
 var host = "cpsc484-03.yale.internal:8888";
 
 var target = localStorage.getItem('target');
+var stop = 0;
 
 $(document).ready(function () {
     frames.start();
@@ -14,7 +15,7 @@ var frames = {
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function (event) {
             // frames.show(JSON.parse(event.data));
-
+        if (stop == 0){
             if(target == null){
                 target = detect_target(JSON.parse(event.data));
                 console.log("Checking");
@@ -27,12 +28,20 @@ var frames = {
                     sendHandCommand(command);
                 }
                 else {
-                    target = null;
+                    frames.stop()
                     document.getElementById('curs').style.visibility = 'hidden';
                 }
 
             }
         }
+        }   
+    },
+    stop: function(){
+        stop = 1;
+        var warning = document.getElementById("warning");
+        warning.style.display = "block";
+        waitPageCountdown(3, '../index.html');
+        document.getElementById('curs').style.visibility = 'hidden';
     }
 };
 
